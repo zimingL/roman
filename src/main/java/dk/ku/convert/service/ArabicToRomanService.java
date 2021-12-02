@@ -1,16 +1,9 @@
-package dk.ku.convert;
+package dk.ku.convert.service;
 
 import java.util.HashMap;
 
-public class ValidationService {
-	public static boolean toArabicValidationService(Integer arabicN) {
-		boolean isValidate = true;
-		if (!(arabicN > 0 && arabicN < 4000))
-			isValidate = false;
-		return isValidate;		
-	} 
-	
-	public static boolean toRomanValidationService(String romanN) {
+public class ArabicToRomanService {
+	public boolean isLegalLetter(String romanN) {
 		boolean isValidate = true;
 		HashMap<Character, Integer>romanMap = new HashMap<Character, Integer>(); // a map that contains all letters in Roman numeral
 		romanMap.put('I', 1);
@@ -27,10 +20,18 @@ public class ValidationService {
 				break;
 				}
 		}
-		
-		
-		
 		return isValidate;		
-	} 
+	}
+	
+	public boolean isInRightOrder(String romanN) {
+		boolean isValidate = false;
+		return isValidate;
+		
+	}
+
+	public String convert(Integer input) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
