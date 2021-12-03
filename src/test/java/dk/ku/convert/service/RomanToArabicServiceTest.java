@@ -23,7 +23,7 @@ class RomanToArabicServiceTest {
 	
 	
 	@Test
-	void toRomanWithLegalLetter() {
+	void romanToRomanInputWithLegalLetter() {
 		assertEquals(true,romanToArabicService.isLegal("IX"));  	//9
 		assertEquals(true,romanToArabicService.isLegal("MCMXCVII")); // 1997
 		assertEquals(false,romanToArabicService.isLegal("IX2")); //with a wrong letter '2'
@@ -31,7 +31,7 @@ class RomanToArabicServiceTest {
 	}
 	
 	@Test
-	void toRomanInRightOrder() {
+	void toRomanInputInRightOrder() {
 		assertEquals(true,romanToArabicService.isLegal("MCMXCVII"));//1997
 		assertEquals(true,romanToArabicService.isLegal("MCMIII"));//1903
 		assertEquals(false,romanToArabicService.isLegal("CMC"));//Wrong
@@ -40,7 +40,7 @@ class RomanToArabicServiceTest {
 	}
 	
 	@Test
-	void toRomanFollowRepeatRule() {
+	void toRomanInputFollowRepeatRule() {
 		assertEquals(false,romanToArabicService.isLegal("MCMIIII"));//wrong: IIII
 		assertEquals(true,romanToArabicService.isLegal("MCMII"));//
 	}

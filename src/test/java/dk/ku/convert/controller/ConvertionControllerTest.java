@@ -1,5 +1,4 @@
 package dk.ku.convert.controller;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -19,25 +17,31 @@ public class ConvertionControllerTest {
 	private MockMvc mockMvc;
 
 	@Test
-	public void testArabicToRomanApiOK() throws Exception {
-	//	MvcResult result = this.mockMvc
+	public void testRomanToArabicApiOK() throws Exception {
 		this.mockMvc
-		.perform(post("/v1/convertion/romantoarabic").param("romanN", "fortytwo"))
+		.perform(post("/v1/convertion/romantoarabic").param("romanN", "I"))
 		.andExpect(status().isOk());
-		//.andReturn();
-		//String content = result.getResponse().getContentAsString();
-		//assertThat(content).isEqualTo("fortytwo");
 	}
 
 	@Test
-	public void testRomanToArabicApiOK() throws Exception {
-	//	MvcResult result = this.mockMvc
+	public void testArabicToRomanApiOK() throws Exception {
 		this.mockMvc
 		.perform(post("/v1/convertion/arabictoroman").param("arabicN", "42"))
 		.andExpect(status().isOk());
-		// .andReturn();
-//		String content = result.getResponse().getContentAsString();
-//		assertThat(content).isEqualTo("42");
+	}
+	
+	@Test
+	public void testRomanToArabicApiNotOK() throws Exception {
+		this.mockMvc
+		.perform(post("/v1/convertion/romantoarabic").param("romanN", "ID"))
+		.andExpect(status().isBadRequest());
+	}
+
+	@Test
+	public void testArabicToRomanApiNotOK() throws Exception {
+		this.mockMvc
+		.perform(post("/v1/convertion/arabictoroman").param("arabicN", "0"))
+		.andExpect(status().isBadRequest());
 	}
 
 }

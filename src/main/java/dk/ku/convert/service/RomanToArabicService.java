@@ -4,13 +4,12 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import lombok.NoArgsConstructor;
+import dk.ku.convert.customizedException.InputWrongFormatException;
 
-@NoArgsConstructor
 public class RomanToArabicService {
 	public boolean isLegal(String romanN) {
 		boolean isValidate = true;
-		Pattern pattern = Pattern.compile("^(?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
+		Pattern pattern = Pattern.compile("^(?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");  ///########shoudl inclide 4000!
 	    Matcher matcher = pattern.matcher(romanN);
 	    isValidate = matcher.matches();
 		return isValidate;		
@@ -18,7 +17,7 @@ public class RomanToArabicService {
 
 	public Integer convert(String romanN) {
 		if(!this.isLegal(romanN))
-			return null;
+			throw new InputWrongFormatException("Input is in wrong format");
 		Integer result = 0;
 		HashMap<Character, Integer>romanMap = new HashMap<Character, Integer>(); // a map that contains all letters in Roman numeral
 		romanMap.put('I', 1);
@@ -42,8 +41,6 @@ public class RomanToArabicService {
 			}
 		}
 		return result;
-		
 	}
-
 	
 }
