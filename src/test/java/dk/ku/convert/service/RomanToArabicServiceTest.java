@@ -45,6 +45,15 @@ class RomanToArabicServiceTest {
 		assertEquals(true,romanToArabicService.isLegal("MCMII"));//
 	}
 	
-	
+	@Test
+	void romanToArabicConvertTest() {
+		assertEquals(1,romanToArabicService.convert("I"));
+		assertEquals(4,romanToArabicService.convert("IV"));
+		assertEquals(9,romanToArabicService.convert("IX"));
+		assertEquals(90,romanToArabicService.convert("XC"));
+		assertEquals(900,romanToArabicService.convert("CM"));
+		assertEquals(1903,romanToArabicService.convert("MCMIII"));
+		assertEquals(1997,romanToArabicService.convert("MCMXCVII"));
+	}
 
 }
