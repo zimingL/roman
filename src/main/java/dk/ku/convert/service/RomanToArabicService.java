@@ -4,7 +4,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class RomanToArabicService {
-	public boolean isInRightScope(Integer arabicN) {
+	public boolean isLegal(Integer arabicN) {
 		boolean isValidate = true;
 		if (!(arabicN > 0 && arabicN < 4000))
 			isValidate = false;
@@ -12,7 +12,7 @@ public class RomanToArabicService {
 	}
 
 	public Integer convert(String romanN) {
-		// TODO Auto-generated method stub
+	 	// TODO Auto-generated method stub
 		return null;
 	}
 

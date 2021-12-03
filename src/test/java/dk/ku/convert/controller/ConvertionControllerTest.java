@@ -1,6 +1,5 @@
 package dk.ku.convert.controller;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -11,7 +10,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -22,21 +20,24 @@ public class ConvertionControllerTest {
 
 	@Test
 	public void testArabicToRomanApiOK() throws Exception {
-		MvcResult result = this.mockMvc
-			.perform(post("/toroman").param("input", "fortytwo"))
-			.andExpect(status().isOk())
-			.andReturn();
-		String content = result.getResponse().getContentAsString();
-	//	assertThat(content).isEqualTo("fortytwo");
+	//	MvcResult result = this.mockMvc
+		this.mockMvc
+		.perform(post("/v1/convertion/romantoarabic").param("romanN", "fortytwo"))
+		.andExpect(status().isOk());
+		//.andReturn();
+		//String content = result.getResponse().getContentAsString();
+		//assertThat(content).isEqualTo("fortytwo");
 	}
-	
+
 	@Test
-	public void testRomanToArabicApi() throws Exception {
-		MvcResult result = this.mockMvc
-			.perform(post("/toarabic").param("input", "42"))
-			.andExpect(status().isOk())
-		 .andReturn();
-		String content = result.getResponse().getContentAsString();
-		//assertThat(content).isEqualTo("42");
+	public void testRomanToArabicApiOK() throws Exception {
+	//	MvcResult result = this.mockMvc
+		this.mockMvc
+		.perform(post("/v1/convertion/arabictoroman").param("arabicN", "42"))
+		.andExpect(status().isOk());
+		// .andReturn();
+//		String content = result.getResponse().getContentAsString();
+//		assertThat(content).isEqualTo("42");
 	}
+
 }
