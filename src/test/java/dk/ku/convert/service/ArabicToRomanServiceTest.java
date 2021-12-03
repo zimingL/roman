@@ -18,30 +18,26 @@ class ArabicToRomanServiceTest {
 	public static void cleanUp() {
 		arabicToRomanService = null;
 	}
-	
-	
 	@Test
-	void toRomanWithLegalLetter() {
-		assertEquals(true,arabicToRomanService.isLegal("IX"));  	//9
-		assertEquals(true,arabicToRomanService.isLegal("MCMXCVII")); // 1997
-		assertEquals(false,arabicToRomanService.isLegal("IX2")); //with a wrong letter '2'
-		assertEquals(false,arabicToRomanService.isLegal("MCMSXCVII"));// with a wrong letter 'S'
+	void arabicToRomanInputInScope() {
+		assertEquals(true,arabicToRomanService.isLegal(1));
+		assertEquals(false, arabicToRomanService.isLegal(0));
+		assertEquals(false, arabicToRomanService.isLegal(4000));
+		assertEquals(false, arabicToRomanService.isLegal(-1));
+		assertEquals(true, arabicToRomanService.isLegal(1903));
 	}
 	
 	@Test
-	void toRomanInRightOrder() {
-		assertEquals(true,arabicToRomanService.isLegal("MCMXCVII"));//1997
-		assertEquals(true,arabicToRomanService.isLegal("MCMIII"));//1903
-		assertEquals(false,arabicToRomanService.isLegal("CMC"));//Wrong
-		assertEquals(false,arabicToRomanService.isLegal("MCDM"));//Wrong , should be MMCD 	
-		assertEquals(false,arabicToRomanService.isLegal("CCD"));//Wrong , should be MMCD 	
+	void ArabicToRomanConvertTest() {
+		assertEquals("I",arabicToRomanService.convert(1));
+		assertEquals("IV",arabicToRomanService.convert(4));
+		assertEquals("IX",arabicToRomanService.convert(9));
+		assertEquals("XC",arabicToRomanService.convert(90));
+		assertEquals("CM",arabicToRomanService.convert(900));
+		assertEquals("MCMIII",arabicToRomanService.convert(1903));
+		assertEquals("MCMXCVII",arabicToRomanService.convert(1997));
+
+		
 	}
-	
-	@Test
-	void toRomanFollowRepeatRule() {
-		assertEquals(false,arabicToRomanService.isLegal("MCMIIII"));//wrong: IIII
-		assertEquals(true,arabicToRomanService.isLegal("MCMII"));//
-	}
-	
 
 }
