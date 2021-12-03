@@ -57,6 +57,7 @@ class ArabicToRomanServiceTest {
 		});
 		assertEquals("Input number should between 1 and 4000.", ex.getMessage());
 	}
+	
 	@Test
 	void arabicToRomanConvertThrowExcetpionTest2() {
 		InputOutOfRangeException ex = assertThrows(InputOutOfRangeException.class, ()->{

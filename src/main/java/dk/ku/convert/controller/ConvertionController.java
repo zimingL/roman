@@ -30,9 +30,8 @@ public class ConvertionController {
 			return romanToArabicService.convert(romanN);
 		}
 		catch(InputWrongFormatException ex){
-		//	throw new ResponseStatusException(
-		//	          HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), ex);
-			throw ex;
+			throw new ResponseStatusException(
+			          HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), ex);
 		}
 }
 
