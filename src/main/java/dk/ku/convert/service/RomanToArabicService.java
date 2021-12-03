@@ -9,7 +9,8 @@ import dk.ku.convert.customizedException.InputWrongFormatException;
 public class RomanToArabicService {
 	public boolean isLegal(String romanN) {
 		boolean isValidate = true;
-		Pattern pattern = Pattern.compile("^(?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");  ///########shoudl inclide 4000!
+		Pattern pattern = Pattern.compile("^((?=[MDCLXVI])M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3}))|M{4}$");
+	  //Pattern pattern = Pattern.compile("^(?=[MDCLXVI])M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");  ///########shoudl inclide 4000!
 	    Matcher matcher = pattern.matcher(romanN);
 	    isValidate = matcher.matches();
 		return isValidate;		
