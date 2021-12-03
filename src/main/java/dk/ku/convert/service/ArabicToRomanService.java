@@ -1,16 +1,19 @@
 package dk.ku.convert.service;
 
+import dk.ku.convert.customizedException.InputOutOfRangeException;
+
 public class ArabicToRomanService {
 	public boolean isLegal(Integer arabicN) {
 		boolean isValidate = true;
-		if (!(arabicN > 0 && arabicN < 4000))
+		if (!(arabicN > 0 && arabicN <= 4000)) {
 			isValidate = false;
+		}
 		return isValidate;		
 	}
 
 	public String convert(Integer arabicN) {
 		if(!this.isLegal(arabicN))
-			return null;
+			throw new InputOutOfRangeException("Input number should between 1 and 4000.");
 		StringBuilder result = new StringBuilder();
 		Integer times = 0;
 		String[] romanLetters = new String[] {"I", "IV", "V", "IX", "X", "XL", "L", "XC",

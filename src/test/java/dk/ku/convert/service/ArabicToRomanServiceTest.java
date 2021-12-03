@@ -22,13 +22,13 @@ class ArabicToRomanServiceTest {
 	void arabicToRomanInputInScope() {
 		assertEquals(true,arabicToRomanService.isLegal(1));
 		assertEquals(false, arabicToRomanService.isLegal(0));
-		assertEquals(false, arabicToRomanService.isLegal(4000));
+		assertEquals(true, arabicToRomanService.isLegal(4000));
 		assertEquals(false, arabicToRomanService.isLegal(-1));
 		assertEquals(true, arabicToRomanService.isLegal(1903));
 	}
 	
 	@Test
-	void ArabicToRomanConvertTest() {
+	void arabicToRomanConvertTest() {
 		assertEquals("I",arabicToRomanService.convert(1));
 		assertEquals("IV",arabicToRomanService.convert(4));
 		assertEquals("IX",arabicToRomanService.convert(9));
